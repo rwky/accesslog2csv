@@ -1,16 +1,15 @@
 accesslog2csv
 =============
 
-Utility script converting Apache/Tomcat log files to CSV format files
+Utility script converting Nginx log files to CSV format files
 
-Introduction
-------------
-
-Recently, I had to analyze the Apache / Tomcat access log files, and so I needed to convert the log files into CSV in order to have a chance to use other tools such as spreadsheet.
-
-The conversion shouldn't be hard. I found some scripts (in PHP, AWK, Perl or Ruby) on the internet, but those didn't fit my needs quite well. I didn't want to lose any data such as http method, byte size sent in response, etc. Also, the CSV should contain spreadsheet friendly data format. For example, "2012-07-10 22:30:03" instead of "10/Jul/2012:22:30:03".
-
-So, I ended up writing yet another one by myself. Why not? ;-)
+```
+Log format should be:
+   log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+                     '$status $body_bytes_sent "$http_referer" '
+                     '"$http_user_agent" "$http_x_forwarded_for" '
+                     '$request_time $upstream_response_time';
+```
 
 How to run
 ----------
